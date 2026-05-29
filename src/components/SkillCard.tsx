@@ -1,5 +1,12 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowBigUp, ArrowUpRight, Bookmark, Check, Copy, MessageSquare } from "lucide-react";
+import {
+	ArrowBigUp,
+	ArrowUpRight,
+	Bookmark,
+	Check,
+	Copy,
+	MessageSquare,
+} from "lucide-react";
 import { useState } from "react";
 
 const SkillCard = ({
@@ -45,7 +52,11 @@ const SkillCard = ({
 						<img src="/logo512.png" alt="author avatar" className="avatar" />
 						<div className="author-copy">
 							<p>Adrian</p>
-							<p>{new Date(createdAt as string).toLocaleDateString()}</p>
+							<p>
+								{createdAt
+									? new Date(createdAt).toLocaleDateString()
+									: "Unknown date"}
+							</p>
 						</div>
 					</div>
 
@@ -89,13 +100,18 @@ const SkillCard = ({
 
 					<div className="actions">
 						<Link to="/skills" className="open" title={`Open ${title}`}>
-              <span>Open</span>
-              <ArrowUpRight size={14} />
-            </Link>
+							<span>Open</span>
+							<ArrowUpRight size={14} />
+						</Link>
 
-            <button type="button" className="save" arial-label="Saved state" disabled>
-              <Bookmark size={16} />
-            </button>
+						<button
+							type="button"
+							className="save"
+							arial-label="Saved state"
+							disabled
+						>
+							<Bookmark size={16} />
+						</button>
 					</div>
 				</div>
 			</div>
